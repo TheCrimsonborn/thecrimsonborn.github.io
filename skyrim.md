@@ -3,7 +3,6 @@ layout: page
 title: Skyrim İndirme Rehberleri
 ---
 
-# Skyrim İndirme Rehberleri
 
 
 ### Dikkat!

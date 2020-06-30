@@ -3,7 +3,6 @@ layout: page
 title: Ultimate Skyrim
 ---
 
-# Ultimate Skyrim
 
 
 ## Önemli

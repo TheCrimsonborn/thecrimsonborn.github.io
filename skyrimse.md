@@ -3,7 +3,6 @@ layout: page
 title: Skyrim SE ModList
 ---
 
-# Skyrim SE ModList
 
 ## Dikkat
 
