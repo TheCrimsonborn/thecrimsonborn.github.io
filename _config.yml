@@ -3,6 +3,8 @@
 title: The Crimsonborn
 
 permalink: /:title
+permalink: /:title
+permalink: /:title
 
 baseurl: ""
 
