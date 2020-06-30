@@ -1,0 +1,36 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} - {{site.title}}</title>
+  <link rel="stylesheet" href="{{site.baseurl}}/css/main.css">
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{{site.baseurl}}/">Ana Sayfa</a></li>
+            <li><a href="{{site.baseurl}}/skyrim">Skyrim İndirme Rehberleri</a></li>
+            <li><a href="{{site.baseurl}}/uskyrim">Ultimate Skyrim</a></li>
+			<li><a href="{{site.baseurl}}/skyrimse">Skyrim SE Modlist</a></li>
+        </ul>
+    </nav>
+    <a class="title-a" href="{{site.baseurl}}/"><h1 class="title">{{site.title}}</h1></a>
+</header>
+      
+  
+  {{ content }}
+
+
+<footer>
+    <p><small>Copyrights &copy; {{site.time | date: '%Y'}} {{site.title}}</small></p>
+    <p><small>&nbsp;&#124;&nbsp;<a href="http://crimsonborn.com">TheCrimsonborn</a> tarafından <span>❤</span> ile oluşturuldu. </small></p>
+</footer>
+{% include analytics.html %}
+</body>
+</html>
