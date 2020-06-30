@@ -15,8 +15,8 @@ Bu mod rehberi sadece **Skyrim Special Edition** için geçerlidir, eğer bu sü
 
 **CoreMods**
 
-* SKSE64 [Current SE build 2.0.17 (runtime 1.5.97)](https://skse.silverlock.org/beta/skse64_2_00_17.7z)
-* Unofficial Skyrim Special Edition Patch [USSEP](https://www.nexusmods.com/skyrimspecialedition/mods/266?tab=files)
+* SKSE64 > [Current SE build 2.0.17 (runtime 1.5.97)](https://skse.silverlock.org/beta/skse64_2_00_17.7z)
+* Unofficial Skyrim Special Edition Patch > [USSEP](https://www.nexusmods.com/skyrimspecialedition/mods/266?tab=files)
 * SkyUI
 * Static Mesh Improvement Mod
 * Realistic Water Two
