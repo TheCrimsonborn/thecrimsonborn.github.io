@@ -30,6 +30,24 @@ social_links:
   - title: Twitch
     url: https://www.twitch.tv/thecrimsonborn
 
+footer_links:
+  - title: thecrimsonborn.com
+    url: https://thecrimsonborn.com
+  - title: crimsonlifters.com
+    url: https://crimsonlifters.com
+  - title: peakloads.com
+    url: https://peakloads.com
+  - title: halilacar.com
+    url: https://halilacar.com
+  - title: crimsonborn.com
+    url: https://crimsonborn.com
+  - title: starstrengthpl.com
+    url: https://starstrengthpl.com
+  - title: github.com/TheCrimsonborn
+    url: https://github.com/TheCrimsonborn
+  - title: linkedin.com/in/halilibrahimacar
+    url: https://www.linkedin.com/in/halilibrahimacar
+
 exclude:
   - README.md
 

@@ -5,6 +5,11 @@ layout: default
 {% assign guide_count = site.navigation | size | minus: 1 %}
 {% assign post_count = site.posts | size %}
 {% assign social_count = site.social_links | size %}
+{% assign footer_count = site.footer_links | size %}
+{% assign link_count = social_count %}
+{% if site.footer_links %}
+  {% assign link_count = link_count | plus: footer_count | minus: 1 %}
+{% endif %}
 {% assign featured_post = site.posts.first %}
 
 <section class="hero hero-home">
@@ -31,7 +36,7 @@ layout: default
         <span class="metric__label">arşiv yazısı</span>
       </article>
       <article class="metric">
-        <span class="metric__value">{{ social_count }}</span>
+        <span class="metric__value">{{ link_count }}</span>
         <span class="metric__label">dış bağlantı</span>
       </article>
     </div>
@@ -103,7 +108,7 @@ layout: default
   {% endif %}
 </section>
 
-{% if site.social_links %}
+{% if site.footer_links or site.social_links %}
   <section class="home-section home-section--links">
     <div class="section-heading">
       <p class="eyebrow">Bağlantılar</p>
@@ -112,8 +117,13 @@ layout: default
     </div>
 
     <div class="link-cloud">
-      {% for item in site.social_links %}
+      {% for item in site.footer_links %}
         <a class="utility-link" href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }}</a>
+      {% endfor %}
+      {% for item in site.social_links %}
+        {% unless item.url == "https://crimsonborn.com" %}
+          <a class="utility-link" href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }}</a>
+        {% endunless %}
       {% endfor %}
     </div>
   </section>
