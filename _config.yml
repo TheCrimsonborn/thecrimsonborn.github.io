@@ -1,34 +1,46 @@
-### your site title here
-
 title: The Crimsonborn
-
-permalink: /:title
-permalink: /:title
-permalink: /:title
-
+description: Skyrim rehberleri, mod listeleri ve yedek yazılar tek yerde.
+tagline: Rehberler, mod notları ve arşiv güncellemeleri.
+lang: tr
 baseurl: ""
+permalink: /:title
 
-sass: 
+sass:
   style: compressed
 
-### exclude the instructions / write-up in the README.md
+navigation:
+  - title: Ana Sayfa
+    url: /
+    description: Siteye genel bakış, öne çıkan bölümler ve son güncellemeler.
+  - title: Skyrim İndirme Rehberleri
+    url: /skyrimindir
+    description: Kurulum için gerekli araçlar, bağlantılar ve video rehberleri.
+  - title: Ultimate Skyrim
+    url: /uskyrim
+    description: Mod paketi notları, gerekli dosyalar ve kurulum referansları.
+  - title: Skyrim SE ModList
+    url: /skyrimse
+    description: Special Edition için derlenmiş temel mod listesi.
+
+social_links:
+  - title: Ana Site
+    url: https://crimsonborn.com
+  - title: YouTube
+    url: https://www.youtube.com/TheCrimsonborn
+  - title: Twitch
+    url: https://www.twitch.tv/thecrimsonborn
+
 exclude:
-- README.md
+  - README.md
 
 highlighter: rouge
 markdown: kramdown
-### exclude the instructions / write-up in the README.md
-
-
-
 
 # Comments
 # disqus-shortname:
 
-#optimization
-#compress.html
 compress_html:
-  clippings: [html,div, p, ul, td, h1, h2, h3, h4,link, meta, footer, nav, img, header, hr, br, head, style, li, ul, ol, time, main, script, title]
+  clippings: [html, div, p, ul, td, h1, h2, h3, h4, link, meta, footer, nav, img, header, hr, br, head, style, li, ul, ol, time, main, script, title, section, article, aside]
   comments: ["<!-- ", " -->"]
   endings: [all]
   ignore:

@@ -2,12 +2,119 @@
 title: Halil Acar
 layout: default
 ---
-<div class="post-list">
-    {% for post in site.posts %}
-    
-        <a class="post-title" href="{{site.baseurl}}{{post.url}}"><h2>{{ post.title }}</h2></a>
-        <p class="date">{{ post.date | date: "%b %-d, %Y" }}</p>
-        <p>{{post.excerpt | strip_html}}</p>
-    
+{% assign guide_count = site.navigation | size | minus: 1 %}
+{% assign post_count = site.posts | size %}
+{% assign social_count = site.social_links | size %}
+{% assign featured_post = site.posts.first %}
+
+<section class="hero hero-home">
+  <div class="hero__content">
+    <p class="eyebrow">Crimsonborn Archive</p>
+    <h1>Skyrim rehberleri, mod listeleri ve yedek içerikler tek merkezde.</h1>
+    <p class="hero__lead">Ana siteye erişilemediğinde bile rehberler, mod kurulum notları ve duyurular burada erişilebilir kalır.</p>
+
+    <div class="hero__actions">
+      <a class="button button--primary" href="#rehberler">Rehberleri incele</a>
+      <a class="button button--secondary" href="#guncellemeler">Son yazıları gör</a>
+    </div>
+  </div>
+
+  <div class="hero__panel">
+    <p class="panel-label">Kısa özet</p>
+    <div class="metric-grid">
+      <article class="metric">
+        <span class="metric__value">{{ guide_count }}</span>
+        <span class="metric__label">ana rehber</span>
+      </article>
+      <article class="metric">
+        <span class="metric__value">{{ post_count }}</span>
+        <span class="metric__label">arşiv yazısı</span>
+      </article>
+      <article class="metric">
+        <span class="metric__value">{{ social_count }}</span>
+        <span class="metric__label">dış bağlantı</span>
+      </article>
+    </div>
+
+    <div class="hero__highlights">
+      <p class="panel-label">Öne çıkan bölümler</p>
+      {% for item in site.navigation offset:1 limit:3 %}
+        <a class="mini-link" href="{{ site.baseurl }}{{ item.url }}">
+          <span>{{ item.title }}</span>
+          <small>{{ item.description }}</small>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="rehberler" class="home-section">
+  <div class="section-heading">
+    <p class="eyebrow">Rehberler</p>
+    <h2>İçeriğe hızlı erişim</h2>
+    <p>En çok ihtiyaç duyulan sabit sayfalar burada kart yapısında toplandı. Hangi bölüme gitmek istediğiniz birkaç saniyede netleşsin diye açıklamaları doğrudan ana sayfaya taşıdım.</p>
+  </div>
+
+  <div class="card-grid">
+    {% for item in site.navigation offset:1 %}
+      <article class="guide-card">
+        <p class="guide-card__index">0{{ forloop.index }}</p>
+        <h3><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></h3>
+        <p>{{ item.description }}</p>
+        <a class="text-link" href="{{ site.baseurl }}{{ item.url }}">Sayfayı aç</a>
+      </article>
     {% endfor %}
-</div>
+  </div>
+</section>
+
+<section id="guncellemeler" class="home-section home-section--updates">
+  <div class="section-heading">
+    <p class="eyebrow">Güncellemeler</p>
+    <h2>Son yazılar ve arşiv kayıtları</h2>
+    <p>Yeni duyurular ayrı bir okuma akışıyla sunuluyor. Böylece sabit rehberler ile zaman bazlı gönderiler artık birbirine karışmıyor.</p>
+  </div>
+
+  {% if featured_post %}
+    <div class="updates-grid{% if post_count == 1 %} updates-grid--single{% endif %}">
+      <article class="featured-update">
+        <p class="panel-label">Öne çıkan yazı</p>
+        <h3><a href="{{ site.baseurl }}{{ featured_post.url }}">{{ featured_post.title }}</a></h3>
+        <p>{{ featured_post.excerpt | strip_html | strip_newlines | truncate: 220 }}</p>
+        <div class="featured-update__meta">
+          <span>{{ featured_post.date | date: "%d.%m.%Y" }}</span>
+          <a class="text-link" href="{{ site.baseurl }}{{ featured_post.url }}">Yazıyı aç</a>
+        </div>
+      </article>
+
+      {% if post_count > 1 %}
+        <div class="update-list">
+          {% for post in site.posts offset:1 %}
+            <article class="update-card">
+              <p class="update-card__date">{{ post.date | date: "%d.%m.%Y" }}</p>
+              <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+              <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 150 }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p class="empty-state">Henüz yayınlanmış bir yazı bulunmuyor.</p>
+  {% endif %}
+</section>
+
+{% if site.social_links %}
+  <section class="home-section home-section--links">
+    <div class="section-heading">
+      <p class="eyebrow">Bağlantılar</p>
+      <h2>Crimsonborn ekosistemine geçiş</h2>
+      <p>Ana site ve içerik kanalları için kısa yolları tek satır yerine kart benzeri bağlantılara taşıdım; mobilde de dokunması daha rahat.</p>
+    </div>
+
+    <div class="link-cloud">
+      {% for item in site.social_links %}
+        <a class="utility-link" href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }}</a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

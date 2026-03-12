@@ -1,0 +1,18 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__copy">
+      <p class="site-footer__eyebrow">Arşiv merkezi</p>
+      <p class="site-footer__summary">{{ site.description }}</p>
+    </div>
+
+    {% if site.social_links %}
+      <div class="site-footer__links">
+        {% for item in site.social_links %}
+          <a class="site-footer__link" href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <p class="site-footer__meta">Copyright &copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+</footer>

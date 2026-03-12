@@ -1,36 +1,47 @@
 ---
 layout: compress
 ---
+{% assign page_title = page.title | default: site.title %}
+{% capture meta_description %}
+  {% if page.description %}
+    {{ page.description }}
+  {% elsif page.excerpt %}
+    {{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}
+  {% else %}
+    {{ site.description }}
+  {% endif %}
+{% endcapture %}
 <!DOCTYPE html>
-<html>
+<html lang="{{ site.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} - {{site.title}}</title>
-  <link rel="stylesheet" href="{{site.baseurl}}/css/main.css">
+  <title>{% if page_title == site.title %}{{ site.title }}{% else %}{{ page_title }} | {{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ meta_description | strip }}">
+  <meta name="theme-color" content="#6f1225">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ meta_description | strip }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
 </head>
 
-<body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="{{site.baseurl}}/">Ana Sayfa</a></li>
-            <li><a href="{{site.baseurl}}/skyrimindir">Skyrim İndirme Rehberleri</a></li>
-            <li><a href="{{site.baseurl}}/uskyrim">Ultimate Skyrim</a></li>
-			      <li><a href="{{site.baseurl}}/skyrimse">Skyrim SE Modlist</a></li>
-        </ul>
-    </nav>
-    <a class="title-a" href="{{site.baseurl}}/"><h1 class="title">{{site.title}}</h1></a>
-</header>
-      
-  
-  {{ content }}
+<body class="layout-{{ page.layout | default: 'default' }}{% if page.url == '/' %} is-home{% endif %}">
+  <a class="skip-link" href="#main-content">İçeriğe geç</a>
 
+  <div class="site-shell">
+    {% include site-header.html %}
 
-<footer>
-    <p><small>Copyrights &copy; {{site.time | date: '%Y'}} {{site.title}}</small></p>
-    <p><small>&nbsp;&#124;&nbsp;<a href="http://crimsonborn.com">TheCrimsonborn</a> tarafından <span>❤</span> ile oluşturuldu. </small></p>
-</footer>
-{% include analytics.html %}
+    <main id="main-content" class="site-main">
+      {{ content }}
+    </main>
+
+    {% include site-footer.html %}
+  </div>
+
+  {% include analytics.html %}
 </body>
 </html>
